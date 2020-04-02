@@ -14,7 +14,9 @@ public class MyDiaryPage {
     }
 
     public MyDiaryPage validateForMoodRatingUpdate() {
-        $(MY_LAST_RATING_CSS ).shouldNotHave(Condition.exactText(String.valueOf(moodModal.getNewMoodRating())));
+        String moodRatingText = String.valueOf(moodModal.getNewMoodRating());  // вот тут достает 0 вместо 4
+        System.out.println(moodRatingText);
+        $(MY_LAST_RATING_CSS ).shouldHave(Condition.exactText(moodRatingText));
         return this;
     }
 }
