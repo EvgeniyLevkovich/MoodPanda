@@ -1,8 +1,8 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+
+import static com.codeborne.selenide.Selenide.*;
 
 public class LoginPage {
 
@@ -20,6 +20,7 @@ public class LoginPage {
 
     public FeedPage login(String user, String password) {
         $(EMAIL_FIELD_CSS).sendKeys(user);
+        sleep(1000);
         $(PASSWORD_FIELD_CSS).sendKeys(password);
         $(LOGIN_BUTTON_CSS).click();
         return new FeedPage();

@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import org.openqa.selenium.Keys;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class MoodModal {
 
@@ -11,7 +12,6 @@ public class MoodModal {
     private final static String MOOD_RATING_SLIDER_CSS = "#slider-range-min a";
     private final static String DESCRIPTION_TEXT_FIELD_CSS = "#TextBoxUpdateMoodTag";
     private final static String TO_DIARY_BUTTON_CSS = ".ButtonMyDiary";
-    public int newMoodRating;
 
     public MoodModal isPageOpened() {
         $(UPDATE_BUTTON_CSS).should(Condition.appear);
@@ -31,13 +31,9 @@ public class MoodModal {
             $(MOOD_RATING_SLIDER_CSS).sendKeys(key);
         }
         $(DESCRIPTION_TEXT_FIELD_CSS).sendKeys(description);
+        sleep(1000);
         $(byText(date)).click();
-        newMoodRating = moodRating;
         return this;
-    }
-
-    public int getNewMoodRating() {
-        return newMoodRating;
     }
 
     public int getActualRate() {

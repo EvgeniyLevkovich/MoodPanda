@@ -16,7 +16,6 @@ public class MoodSteps {
         feedPage = new FeedPage();
         moodModal = new MoodModal();
         myDiaryPage = new MyDiaryPage();
-
     }
 
     public MoodSteps login(String user, String password) {
@@ -33,7 +32,7 @@ public class MoodSteps {
                 .clickUpdateMood()
                 .toDiary()
                 .isPageOpened()
-                .validateForMoodRatingUpdate();  // посмотри плиз вот это проверку, я вроде доволен как придумал, но почему-то все равно кажется что говнокод и можно лучше
+                .validateForMoodRatingUpdate(moodRating);
         return this;
     }
 }
